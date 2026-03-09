@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ── Grow Wise Legacy Palette (OKLCH raw L C H) ─────────────────────────
+       Dark primary  #1F2933  → oklch(0.25 0.02 240)
+       Gold accent   #C9A227  → oklch(0.72 0.17 85)
+       Light bg      #F9FAFB  → oklch(0.98 0 0)
+    ──────────────────────────────────────────────────────────────────────── */
+
+    /* Core semantic tokens */
+    --background:         0.98 0 0;
+    --foreground:         0.2 0.02 240;
+    --card:               1 0 0;
+    --card-foreground:    0.2 0.02 240;
+    --popover:            1 0 0;
+    --popover-foreground: 0.2 0.02 240;
+
+    /* Primary = dark charcoal */
+    --primary:            0.25 0.02 240;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary = gold accent */
+    --secondary:          0.72 0.17 85;
+    --secondary-foreground: 0.15 0 0;
+
+    /* Gold accent */
+    --accent:             0.72 0.17 85;
+    --accent-foreground:  0.15 0 0;
+
+    /* Muted = warm light gray */
+    --muted:              0.94 0.005 240;
+    --muted-foreground:   0.5 0.02 240;
+
+    --destructive:        0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border:             0.88 0.01 240;
+    --input:              0.88 0.01 240;
+    --ring:               0.72 0.17 85;
+
+    --chart-1: 0.72 0.17 85;
+    --chart-2: 0.25 0.02 240;
+    --chart-3: 0.6 0.12 200;
+    --chart-4: 0.55 0.18 60;
+    --chart-5: 0.45 0.1 280;
+
+    --sidebar: 0.98 0 0;
+    --sidebar-foreground: 0.2 0.02 240;
+    --sidebar-primary: 0.72 0.17 85;
+    --sidebar-primary-foreground: 0.15 0 0;
+    --sidebar-accent: 0.94 0.005 240;
+    --sidebar-accent-foreground: 0.25 0.02 240;
+    --sidebar-border: 0.88 0.01 240;
+    --sidebar-ring: 0.72 0.17 85;
+
+    /* Brand-specific extras */
+    --gold:        0.72 0.17 85;
+    --gold-light:  0.82 0.14 85;
+    --gold-dark:   0.58 0.18 85;
+    --dark-primary: 0.25 0.02 240;
+    --dark-deep:   0.18 0.02 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, oklch(0.72 0.17 85), oklch(0.85 0.14 78));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Fade-up animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays */
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+  .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  /* Gold button */
+  .btn-gold {
+    background-color: oklch(0.72 0.17 85);
+    color: oklch(0.15 0 0);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+  .btn-gold:hover {
+    background-color: oklch(0.78 0.16 85);
+    transform: translateY(-1px);
+  }
+
+  /* Gold outline button */
+  .btn-gold-outline {
+    border: 2px solid oklch(0.72 0.17 85);
+    color: oklch(0.72 0.17 85);
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-gold-outline:hover {
+    background-color: oklch(0.72 0.17 85 / 0.12);
+    transform: translateY(-1px);
+  }
+
+  /* Card hover lift */
+  .card-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px oklch(0.25 0.02 240 / 0.15);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: oklch(0.95 0 0); }
+::-webkit-scrollbar-thumb { background: oklch(0.72 0.17 85 / 0.5); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: oklch(0.72 0.17 85); }
